@@ -24,5 +24,14 @@ spring:
                    ## Rest Client -> http://localhost:4004/api-docs/patients 
                   ## API GATEWAY -> http://patient-service:4000/v3/api-docs
                   ## Patient Service -> /patients -> Patietn Array
-
+                
+                - id: auth-service-route
+                  uri : http://auth-service:4005
+                  predicates:
+                  - Path=/auth/**
+                  filters:
+                  - StripPrefix=1
+                ## Rest Client -> http://localhost:4004/auth/login 
+                  ## API GATEWAY -> http://auth-service:4005/login
+                  ## Auth Service -> /login -> jwt token
                   
